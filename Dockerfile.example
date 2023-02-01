@@ -1,0 +1,14 @@
+FROM python:3.7-slim
+WORKDIR $APP_HOME
+COPY . ./
+RUN pip install -r requirements.txt
+ENV APP_HOME /app
+ENV DATABASE_HOSTNAME="hostname.com"
+ENV DATABASE_PORT="5432"
+ENV DATABASE_USERNAME="username"
+ENV DATABASE_PASSWORD="password"
+ENV DATABASE_NAME="database"
+ENV SECRET_KEY="918627ba4ab150126e83f40255bab171c6773b86c3e46bc8ec130b6f14bf9b84"
+ENV ALGORITHM="HS256"
+ENV ACCESS_TOKEN_EXPIRE_MINUTES=30
+CMD exec gunicorn --bind :8000 --workers 1 --worker-class uvicorn.workers.UvicornWorker  --threads 8 app.main:app

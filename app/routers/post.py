@@ -23,6 +23,7 @@ def create_posts(post: PostCreate, db: Session = Depends(get_db), current_user: 
   db.add(new_post)
   db.commit()
   db.refresh(new_post)
+  
   return new_post 
 
 @router.get("/{post_id}", response_model=PostOut)
