@@ -31,9 +31,13 @@ I think that's all.
 cp .env.example .env
 ```
 
-2. After this, you can start ```uvicorn```:
+2. Install `Python` libraries and start `uvicorn`:
 
 ```bash
+# Install Libs
+pip install -r requirements.txt
+
+# Start Uvicorn
 uvicorn app.main:app
 ````
 
